@@ -1,0 +1,235 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{marvosym}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{verbatim}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english, russian]{babel}
+\usepackage{tabularx}
+\usepackage{hyphenat}
+\usepackage{fontawesome}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\input{glyphtounicode}
+
+
+%---------- FONT OPTIONS ----------
+% sans-serif
+% \usepackage[sfdefault]{FiraSans}
+% \usepackage[sfdefault]{roboto}
+% \usepackage[sfdefault]{noto-sans}
+% \usepackage[default]{sourcesanspro}
+
+% serif
+% \usepackage{CormorantGaramond}
+% \usepackage{charter}
+
+
+\pagestyle{fancy}
+\fancyhf{} % clear all header and footer fields
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Adjust margins
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\textheight}{1.0in}
+
+\urlstyle{same}
+
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Sections formatting
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+% Ensure that generate pdf is machine readable/ATS parsable
+\pdfgentounicode=1
+
+%-------------------------
+% Custom commands
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeSubSubheading}[2]{
+    \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \textit{\small#1} & \textit{\small #2} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeEducationHeading}[6]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+      \textit{\small#5} & \textit{\small #6} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+
+\newcommand{\resumeProjectHeading}[2]{
+    \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+
+\newcommand{\resumeOrganizationHeading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & \textit{\small #2} \\
+      \textit{\small#3}
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+%-------------------------------------------
+%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{document}
+
+%---------- HEADING ----------
+
+\begin{center}
+    \textbf{\Huge \scshape Вячеслав Бирин} \\ \vspace{3pt}
+    \small
+    \faMobile \hspace{.5pt} \href{tel:+79504458490}{+7 950 445 84 90}
+    $|$
+    \faAt \hspace{.5pt} \href{mailto:slavabirin1@yandex.ru}{slavabirin1@yandex.ru}
+    $|$
+    \faGithub \hspace{.5pt} \href{https://github.com/Vyacheslav1557}{github.com/Vyacheslav1557}
+    $|$
+    \faMapMarker \hspace{.5pt} {Санкт-Петербург, Россия}
+\end{center}
+
+
+
+%----------- EDUCATION -----------
+
+\section{Образование}
+  \vspace{3pt}
+  \resumeSubHeadingListStart
+    
+    \resumeSubheading
+      {Университет ИТМО}{Санкт-Петербург, Россия}
+      {Бакалавриат, Компьютерные технологии}{Сен 2025 \textbf{--} 2029 (ожидается)}
+    
+  \resumeSubHeadingListEnd
+
+
+
+%----------- SKILLS -----------
+
+\section{Навыки}
+  \vspace{2pt}
+  \resumeSubHeadingListStart
+    \small{\item{
+        
+        \textbf{Языки программирования:}{ Golang, Python, TypeScript, JavaScript, C++, C, Java} \\ \vspace{3pt}
+        
+        \textbf{Технологии:}{ FastAPI, Flask, SQLAlchemy, gRPC, Next.js, React, Express, Fiber, PostgreSQL, Redis, RabbitMQ, NATS, S3 (SeaweedFS), Docker, Git, sqlc, WebSockets} \\ \vspace{3pt}
+        
+        \textbf{Методологии:}{ Agile, Scrum, Schema-First, TDD} \\ \vspace{3pt}
+        
+    }}
+  \resumeSubHeadingListEnd
+
+
+
+%----------- EXPERIENCE -----------
+
+\section{Опыт работы}
+  \vspace{3pt}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {RDTI}{Пермь, Россия}
+      {Разработчик (Golang)}{2023}
+        \resumeItemListStart
+            \resumeItem{Разработал Telegram-бота для управления шлагбаумом, реализовав интеграцию с микроустройством по протоколу TCP.}
+        \resumeItemListEnd
+
+    \resumeSubheading
+      {L\&P}{Пермь, Россия}
+      {Web-разработчик}{2022}
+        \resumeItemListStart
+            \resumeItem{Разработал и запустил лендинг для юридической компании (\href{https://бизнесюрист59.рф/}{бизнесюрист59.рф}).}
+            \resumeItem{Обеспечил эффективную коммуникацию с заказчиком и реализацию требований в условиях сложного переговорного процесса.}
+            \resumeItem{Стек: HTML, CSS, JavaScript.}
+        \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%----------- PROJECTS -----------
+
+\section{Проекты}
+    \vspace{3pt}
+    \resumeSubHeadingListStart
+      
+      \resumeProjectHeading
+        {\textbf{Gate} $|$ \emph{\href{https://gate149.ru}{\color{blue}gate149.ru}}}{}
+          \resumeItemListStart
+            \resumeItem{Разработка комплексной платформы для тестирования, призванной заменить устаревшую систему в образовательном учреждении.}
+            \resumeItem{Победитель проектных конкурсов Центрального Университета и ИТМО.}
+            \resumeItem{Сформировал команду разработчиков (Frontend/Next.js, Backend/Golang), провел обучение и менторство.}
+            \resumeItem{Активно взаимодействую с преподавательским составом для миграции на новую платформу и дальнейшего развития продукта.}
+          \resumeItemListEnd
+      
+    \resumeSubHeadingListEnd
+
+
+%----------- AWARDS & ACHIEVEMENTS -----------
+
+\section{Достижения и Награды}
+  \vspace{2pt}
+  \resumeSubHeadingListStart
+    \small{\item{
+        \textbf{Победитель проектного конкурса ИТМО (2025)} \\ \vspace{3pt}
+        \textbf{Победитель проектного конкурса Центрального Университета (2025)} \\ \vspace{3pt}
+        \textbf{Призёр регионального этапа Всероссийской олимпиады школьников по информатике (2023)} \\ \vspace{3pt}
+        \textbf{Участник заключительного этапа Всероссийской командной олимпиады школьников по программированию (2024)} \\ \vspace{3pt}
+        \textbf{Выпускник курса по анализу данных на Python от ШАД (2023)} \\ \vspace{3pt}
+        \textbf{Выпускник двухгодичного курса по разработке на Python от ШАД (2022)} \\ \vspace{3pt}
+        \textbf{Уровень английского языка B1 (подтвержден в 2023)}
+    }}
+  \resumeSubHeadingListEnd
+
+%-------------------------------------------
+\end{document}
