@@ -1,0 +1,69 @@
+name: Build and Deploy CV
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - 'main.typ'
+      - 'icons/**'
+      - 'Taskfile.yml'
+      - '.github/workflows/build-cv.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v3
+        with:
+          typst-version: "0.15.1"
+
+      - name: Install fonts & poppler tools
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y fonts-liberation fonts-noto-core poppler-utils
+
+      - name: Compile CV
+        run: |
+          typst compile main.typ main.pdf
+
+      - name: Validate PDF (1 page & ATS text extraction)
+        run: |
+          pages=$(pdfinfo main.pdf | grep -oP '^Pages:\s+\K\d+')
+          if [ "$pages" -ne 1 ]; then
+            echo "::error::PDF has $pages pages, expected exactly 1 page!"
+            exit 1
+          fi
+          if ! pdftotext main.pdf - | grep -q "Вячеслав Бирин"; then
+            echo "::error::Cyrillic text extraction failed or corrupt!"
+            exit 1
+          fi
+          echo "PDF validation succeeded: 1 page, clean Cyrillic text."
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: resume-pdf
+          path: main.pdf
+
+      - name: Commit and push updated PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add main.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "build: auto-compile main.pdf from Typst [skip ci]"
+            git push
+          else
+            echo "No changes to main.pdf"
+          fi

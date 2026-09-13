@@ -1,0 +1,50 @@
+version: '3'
+
+tasks:
+  default:
+    desc: "Build CV to main.pdf"
+    cmds:
+      - task: build
+
+  build:
+    desc: "Compile Typst resume into main.pdf"
+    cmds:
+      - typst compile main.typ main.pdf
+    sources:
+      - main.typ
+      - icons/*.svg
+    generates:
+      - main.pdf
+
+  watch:
+    desc: "Watch main.typ and recompile on change"
+    cmds:
+      - typst watch main.typ main.pdf
+
+  check:
+    desc: "Validate that main.pdf is exactly 1 page and contains valid text"
+    cmds:
+      - typst compile main.typ main.pdf
+      - |
+        pages=$(pdfinfo main.pdf | grep -oP '^Pages:\s+\K\d+')
+        if [ "$pages" -ne 1 ]; then
+          echo "Error: PDF has $pages pages, expected 1"
+          exit 1
+        fi
+        if ! pdftotext main.pdf - | grep -q "Вячеслав Бирин"; then
+          echo "Error: Cyrillic text extraction failed"
+          exit 1
+        fi
+        echo "Validation passed: main.pdf is 1 page and text is ATS-readable."
+
+  preview:
+    desc: "Render PNG preview of main.pdf"
+    cmds:
+      - task: build
+      - pdftoppm -png -r 150 main.pdf preview
+      - echo "Preview rendered to preview-1.png"
+
+  clean:
+    desc: "Clean temporary preview files"
+    cmds:
+      - rm -f preview-*.png

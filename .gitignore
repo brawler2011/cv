@@ -1,5 +1,12 @@
 *
 
 !main.pdf
+!main.typ
 !main.tex
+!Taskfile.yml
+!icons/
+!icons/**
+!.github/
+!.github/**
 !.gitignore
+!README.md
